@@ -1,3 +1,10 @@
+body.menu-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
@@ -23,6 +30,16 @@
   --shadow-xl: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.08);
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Better mobile touch targets */
+button, a, input, textarea {
+  min-height: 44px; 
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -39,7 +56,6 @@ body {
   color: var(--dark);
   line-height: 1.7;
   scroll-snap-type: y mandatory;
-  overflow-y: scroll;
   height: 100vh;
 }
 
@@ -533,8 +549,20 @@ footer p {
 }
 
 @media (max-width: 768px) {
+  body {
+  overflow-x: hidden;
+  }
+  header {
+    height: 70px;
+    padding: 10px 0;
+  }
+
   #hero {
     padding-top: 80px; 
+    height: auto;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
   }
 
   .header-flex {
@@ -555,6 +583,9 @@ footer p {
     gap: 30px;
     transition: var(--transition);
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 999;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
   .nav-links.show {
@@ -563,21 +594,30 @@ footer p {
 
   .hamburger {
     display: block;
+    position: relative;
+    z-index: 1001;
   }
 
   section {
     padding: 60px 20px;
   }
+
+  .hero-text {
+    padding-top: 20px; 
+    margin-bottom: 30px;
+  }
   
   #hero h2 {
     font-size: 2.5rem;
     text-align: center;
+    margin-top: 20px;
   }
   
   #hero p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     text-align: center; 
     max-width: 100%;
+    padding: 0 15px;
   }
   .hero-flex {
     flex-direction: column; 
@@ -587,8 +627,16 @@ footer p {
   .hero-image img {
     width: 290px; 
     height: 280px;
+    margin: 0 auto 30px;
   }
+
+  .container h2{
+    padding-top: 50px;
+  }
+
+  
 }
+
 
 @media (max-width: 576px) {
   .logo {
@@ -600,12 +648,12 @@ footer p {
   }
   
   #hero h2 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     line-height: 1.3;
   }
   
   #hero p {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
   
   .project-list {
@@ -614,6 +662,29 @@ footer p {
   
   .cta-button {
     padding: 10px 25px;
+  }
+
+  form input,
+  form textarea,
+  form button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  #contact .container {
+    padding: 0 15px;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .separator {
+    width: 50px;
+    height: 2px;
   }
 }
 
